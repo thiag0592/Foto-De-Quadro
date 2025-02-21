@@ -2,12 +2,16 @@ package com.prjFDQ.FDQ.entities;
 
 import java.util.Objects;
 
+import com.prjFDQ.FDQ.dto.UserDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="tb_user")
 public class User {
 
 	@Id
@@ -17,7 +21,14 @@ public class User {
 	private String email;
 	private String senha;
 	
+	public User() {
+	}
 	
+	public User(UserDTO dto) {
+		this.nome = dto.getNome();
+		this.email = dto.getEmail();
+		this.senha = dto.getSenha();
+	}
 	
 	public User(Integer id, String nome, String email, String senha) {
 		this.id = id;

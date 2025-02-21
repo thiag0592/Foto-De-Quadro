@@ -6,8 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="tb_sala")
 public class Sala {
 
 	@Id
@@ -15,12 +17,13 @@ public class Sala {
 	private Integer id;
 	private String nome;
 	
-	private Sala sala;
 
-	public Sala(Integer id, String nome, Sala sala) {
+	public Sala() {
+	}
+	
+	public Sala(Integer id, String nome) {
 		this.id = id;
 		this.nome = nome;
-		this.sala = sala;
 	}
 
 	public Integer getId() {
@@ -37,14 +40,6 @@ public class Sala {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Sala getSala() {
-		return sala;
-	}
-
-	public void setSala(Sala sala) {
-		this.sala = sala;
 	}
 
 	@Override

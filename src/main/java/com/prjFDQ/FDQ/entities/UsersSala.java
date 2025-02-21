@@ -4,35 +4,39 @@ import java.util.Objects;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class UsersSala {
 	
 	@EmbeddedId
 	private UserSalaPK userSalaPK;
-	
+	@Enumerated(EnumType.STRING)
 	private Status status;
 
+	public UsersSala() {
+	}
 
-	public UsersSala(Integer userId, Integer SalaId, Status status) {
+	public UsersSala(User userId, Sala SalaId, Status status) {
 		this.userSalaPK = new UserSalaPK(userId,SalaId);
 		this.status = status;
 	}
 
 
-	public Integer getUserId() {
+	public User getUserId() {
 		return this.userSalaPK.getUserId();
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(User userId) {
 		this.userSalaPK.setUserId(userId);
 	}
 	
-	public Integer getSalaId() {
+	public Sala getSalaId() {
 		return this.userSalaPK.getSalaId();
 	}
 
-	public void setSalaId(Integer salaId) {
+	public void setSalaId(Sala salaId) {
 		this.userSalaPK.setSalaId(salaId);
 	}
 

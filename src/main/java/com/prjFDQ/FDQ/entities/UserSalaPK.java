@@ -10,38 +10,43 @@ import jakarta.persistence.ManyToOne;
 public class UserSalaPK {
 	
 	@ManyToOne
-	@JoinColumn
-	private Integer userId;
+	@JoinColumn(name="user_id")
+	private User userId;
 
 	@ManyToOne
-	@JoinColumn
-	private Integer SalaId;
+	@JoinColumn(name="sala_id")
+	private Sala salaId;
+	
+	
 
-	public UserSalaPK(Integer userId, Integer salaId) {
-		super();
-		this.userId = userId;
-		SalaId = salaId;
+	public UserSalaPK() {
 	}
 
-	public Integer getUserId() {
+	public UserSalaPK(User userId, Sala salaId) {
+		super();
+		this.userId = userId;
+		this.salaId = salaId;
+	}
+
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
 	}
 
-	public Integer getSalaId() {
-		return SalaId;
+	public Sala getSalaId() {
+		return salaId;
 	}
 
-	public void setSalaId(Integer salaId) {
-		SalaId = salaId;
+	public void setSalaId(Sala salaId) {
+		this.salaId = salaId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(SalaId, userId);
+		return Objects.hash(salaId, userId);
 	}
 
 	@Override
@@ -53,7 +58,7 @@ public class UserSalaPK {
 		if (getClass() != obj.getClass())
 			return false;
 		UserSalaPK other = (UserSalaPK) obj;
-		return Objects.equals(SalaId, other.SalaId) && Objects.equals(userId, other.userId);
+		return Objects.equals(salaId, other.salaId) && Objects.equals(userId, other.userId);
 	}
 	
 	

@@ -3,24 +3,28 @@ package com.prjFDQ.FDQ.entities;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="tb_aula")
 public class Aula {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToMany
+	@ManyToOne
 	private Sala sala;
 	
-	@Temporal(TemporalType.DATE)
 	private LocalDate data;
 	private String descricao;
+	
+	public Aula() {
+	}
 	
 	public Aula(Integer id, Sala sala, LocalDate data, String descricao) {
 		this.id = id;

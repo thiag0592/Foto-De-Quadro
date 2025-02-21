@@ -4,9 +4,11 @@ import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="tb_fotos")
 public class Fotos {
 
 	@Id
@@ -14,8 +16,13 @@ public class Fotos {
 	
 	private Integer ordem;
 	
-	@OneToMany
+	@ManyToOne
 	private Aula aula;
+
+	
+	
+	public Fotos() {
+	}
 
 	public Fotos(String url, Integer ordem, Aula aula) {
 		this.url = url;
